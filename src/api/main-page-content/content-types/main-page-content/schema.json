@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_page_contents",
+  "info": {
+    "singularName": "main-page-content",
+    "pluralName": "main-page-contents",
+    "displayName": "main-page-content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainimage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
