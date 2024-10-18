@@ -788,32 +788,94 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiMainPageContentMainPageContent extends Schema.SingleType {
-  collectionName: 'main_page_contents';
+export interface ApiHomeContentHomeContent extends Schema.SingleType {
+  collectionName: 'home_contents';
   info: {
-    singularName: 'main-page-content';
-    pluralName: 'main-page-contents';
-    displayName: 'main-page-content';
+    singularName: 'home-content';
+    pluralName: 'home-contents';
+    displayName: 'Home content';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    mainimage: Attribute.Media;
+    homeimage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::main-page-content.main-page-content',
+      'api::home-content.home-content',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::main-page-content.main-page-content',
+      'api::home-content.home-content',
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageGalleryImageHomePageGalleryImage
+  extends Schema.CollectionType {
+  collectionName: 'home_page_gallery_images';
+  info: {
+    singularName: 'home-page-gallery-image';
+    pluralName: 'home-page-gallery-images';
+    displayName: 'Home Page Gallery Image';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page-gallery-image.home-page-gallery-image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page-gallery-image.home-page-gallery-image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    content: Attribute.Blocks & Attribute.Required;
+    banner: Attribute.Media;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 64;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -868,7 +930,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::main-page-content.main-page-content': ApiMainPageContentMainPageContent;
+      'api::home-content.home-content': ApiHomeContentHomeContent;
+      'api::home-page-gallery-image.home-page-gallery-image': ApiHomePageGalleryImageHomePageGalleryImage;
+      'api::post.post': ApiPostPost;
       'api::project-link.project-link': ApiProjectLinkProjectLink;
     }
   }

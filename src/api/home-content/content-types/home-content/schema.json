@@ -1,17 +1,17 @@
 {
   "kind": "singleType",
-  "collectionName": "main_page_contents",
+  "collectionName": "home_contents",
   "info": {
-    "singularName": "main-page-content",
-    "pluralName": "main-page-contents",
-    "displayName": "main-page-content"
+    "singularName": "home-content",
+    "pluralName": "home-contents",
+    "displayName": "Home content"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "mainimage": {
+    "homeimage": {
       "allowedTypes": [
         "images",
         "files",
@@ -19,7 +19,7 @@
         "audios"
       ],
       "type": "media",
-      "multiple": false
+      "multiple": true
     }
   }
 }
